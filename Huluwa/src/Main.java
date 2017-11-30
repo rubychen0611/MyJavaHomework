@@ -14,7 +14,7 @@ public class Main
         huluwaqueue.LineUpRandomly();//初始乱序
         space.Output();
         /*葫芦娃排序*/
-        new QuickSorter().sort(huluwaqueue);
+        new AutoSorter().sort(huluwaqueue);
         /*对峙局面1*/
         System.out.println("(排序后)对峙局面1：");
         scorpionqueue.FormationChange(new MoonForm(space)); //蝎子精和喽啰站成偃月形

@@ -58,6 +58,6 @@ class Snake extends Creature //生物：蛇精
     }
     public void report()
     {
-        System.out.print("蛇精");
+        System.out.print("?");
     }
 }

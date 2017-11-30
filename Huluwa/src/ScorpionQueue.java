@@ -1,4 +1,4 @@
-public class ScorpionQueue extends Queue //蝎子精及其喽啰阵型
+public class ScorpionQueue extends Queue<Creature> //蝎子精及其喽啰阵型
 {
     ScorpionQueue()
     {

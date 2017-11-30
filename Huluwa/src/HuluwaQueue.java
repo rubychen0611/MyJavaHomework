@@ -1,10 +1,13 @@
-public class HuluwaQueue extends Queue
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class HuluwaQueue extends Queue<Huluwa>
 {
     Space space;
     HuluwaQueue()
     {
         num = 7;
-        creatures = new Creature[num];
+        creatures = new Huluwa[num];//new Creature[num];
         int i;
         for (i = 0; i < num; i++)
         {
@@ -20,37 +23,24 @@ public class HuluwaQueue extends Queue
                 case 7: huluAttribute = HuluAttribute.PURPLE; break;
                 default: huluAttribute = null; assert(false);
             }
-            creatures[i]  = new Huluwa(i + 1, huluAttribute);
+            creatures[i] = new Huluwa(i + 1, huluAttribute);
         }
     }
 
 
     public void LineUpRandomly() //任意站队
     {
-        int[] array = new int[]{0, 1, 2, 3, 4, 5, 6};
-        int i, rand;
-        for (i = 6; i >= 0; i--) {
-            java.util.Random random = new java.util.Random();// 定义随机类
-            rand = random.nextInt(i + 1);// 返回[0,7)集合中的整数，注意不包括7
-            if (rand != i) {
-                int temp = array[i];
-                array[i] = array[rand];
-                array[rand] = temp;
-            }
-        }
+        ArrayList<Integer> array = new ArrayList<Integer>(num);
+        for(int i = 0; i < num; i++)
+            array.add(i);
+        Collections.shuffle(array);
 
-        for(Creature cr :creatures)
-            cr.leavePosition();
-        for (i = 0; i < 7; i++)
-               creatures[array[i]].setPosition(positions[i]);
+        for(Creature hlw :creatures)
+            hlw.leavePosition();
+
+        for (int i = 0; i < num; i++)
+            creatures[array.get(i)].setPosition(positions.get(i));
     }
 
-    public void report() //报数
-    {
-        int i;
-        for (Position position: positions)
-            position.getHolder().report(); //每个葫芦娃依次报数
-        System.out.println();
-    }
 
 }
